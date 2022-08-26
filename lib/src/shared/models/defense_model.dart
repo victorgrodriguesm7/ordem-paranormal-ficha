@@ -4,14 +4,14 @@ import 'package:ordem_paranormal_ficha/src/shared/models/defense_resistances_mod
 
 import './defense_details_model.dart';
 
-class Defense {
+class DefenseModel {
   final int passive;
   final int dodge;
   final int block;
-  final List<DefenseDetails> details;
-  final List<DefenseResistances> resistances;
+  final List<DefenseDetailsModel> details;
+  final List<DefenseResistancesModel> resistances;
 
-  Defense({
+  DefenseModel({
     required this.passive,
     required this.dodge,
     required this.block,
@@ -29,17 +29,19 @@ class Defense {
     };
   }
 
-  factory Defense.fromMap(Map<String, dynamic> map) {
-    return Defense(
+  factory DefenseModel.fromMap(Map<String, dynamic> map) {
+    return DefenseModel(
       passive: map['passive'] as int,
       dodge: map['dodge'] as int,
       block: map['block'] as int,
-      details: List<DefenseDetails>.from((map['details'] as List<int>).map<DefenseDetails>((x) => DefenseDetails.fromMap(x as Map<String,dynamic>),),),
-      resistances: List<DefenseResistances>.from((map['resistances'] as List<int>).map<DefenseResistances>((x) => DefenseResistances.fromMap(x as Map<String,dynamic>),),),
+      details: List<DefenseDetailsModel>.from((map['details'] as List<int>).map<DefenseDetailsModel>((x) => DefenseDetailsModel.fromMap(x as Map<String,dynamic>),),),
+      resistances: List<DefenseResistancesModel>.from((map['resistances'] as List<int>).map<DefenseResistancesModel>((x) => DefenseResistancesModel.fromMap(x as Map<String,dynamic>),),),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Defense.fromJson(String source) => Defense.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory DefenseModel.fromJson(String source) => DefenseModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  factory DefenseModel.empty() => DefenseModel(passive: 0, dodge: 0, block: 0, details: [], resistances: []);
 }

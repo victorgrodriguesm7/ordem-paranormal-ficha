@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-class DefenseResistances {
+class DefenseResistancesModel {
   final int amount;
   final String type;
 
-  DefenseResistances({
+  DefenseResistancesModel({
     required this.amount,
     required this.type
   });
@@ -16,8 +16,8 @@ class DefenseResistances {
     };
   }
 
-  factory DefenseResistances.fromMap(Map<String, dynamic> map) {
-    return DefenseResistances(
+  factory DefenseResistancesModel.fromMap(Map<String, dynamic> map) {
+    return DefenseResistancesModel(
       amount: map['amount'] as int,
       type: map['type'] as String,
     );
@@ -25,5 +25,5 @@ class DefenseResistances {
 
   String toJson() => json.encode(toMap());
 
-  factory DefenseResistances.fromJson(String source) => DefenseResistances.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory DefenseResistancesModel.fromJson(String source) => DefenseResistancesModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
