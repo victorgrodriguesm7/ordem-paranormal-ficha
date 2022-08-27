@@ -3,7 +3,7 @@ import 'package:ordem_paranormal_ficha/src/shared/models/character_model.dart';
 abstract class AppState {}
 
 class InitialAppState extends AppState {
-  final bool Function() loadCharacter;
+  final Future<bool> Function() loadCharacter;
 
   InitialAppState({
     required this.loadCharacter

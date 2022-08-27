@@ -20,8 +20,10 @@ class AppController extends ValueNotifier<AppState> {
 
   bool get _hasCharacterAlready => _character != null;
 
-  bool _loadCharacter() {
-    if (database.loading) return false;
+  Future<bool> _loadCharacter() async {
+    if (!database.isStarted) {
+      await database.init();
+    }
 
     _character = database.getCharacterModel();
 
@@ -35,7 +37,10 @@ class AppController extends ValueNotifier<AppState> {
   }
 
   Future<bool> _saveCharacter() async {
-    if (database.loading) return false;
+    if (!database.isStarted) {
+      print("Loading DB");
+      await database.init();
+    }
     
     if (_character != null){
       return await database.saveCharacterModel(_character!);
