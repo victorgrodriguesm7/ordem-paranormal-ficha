@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:ordem_paranormal_ficha/src/app_controller.dart';
 import 'package:ordem_paranormal_ficha/src/app_state.dart';
 
@@ -18,6 +19,7 @@ class SplashPage extends StatelessWidget {
         }
 
         if (state is SuccessAppState){
+          FlutterNativeSplash.remove();
           if (state.hasCharacterAlready){
             // TODO: Redirect to Register Page
           } else {
@@ -25,9 +27,7 @@ class SplashPage extends StatelessWidget {
           }
         }
 
-        return const Center(
-          child: Text("Bem Vindo a Ordem"),
-        );
+        return Container();
       }
     );
   }
