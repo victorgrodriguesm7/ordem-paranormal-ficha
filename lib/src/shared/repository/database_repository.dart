@@ -5,15 +5,13 @@ const String characterKey = 'character';
 
 class DatabaseRepository {
   SharedPreferences? sharedPreferences;
-  bool loading = true;
+  bool isStarted = false;
 
-  DatabaseRepository(){
-    _init();
-  }
+  DatabaseRepository();
 
-  _init() async {
+  init() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    loading = false;
+    isStarted = false;
   }
 
   CharacterModel? getCharacterModel() {
