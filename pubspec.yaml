@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_modular: 
   shared_preferences: ^2.0.15
+  flutter_native_splash: ^2.2.8
 
 dev_dependencies:
   flutter_test:
