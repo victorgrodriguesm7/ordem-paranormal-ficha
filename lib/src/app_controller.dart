@@ -38,7 +38,6 @@ class AppController extends ValueNotifier<AppState> {
 
   Future<bool> _saveCharacter() async {
     if (!database.isStarted) {
-      print("Loading DB");
       await database.init();
     }
     
