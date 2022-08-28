@@ -28,4 +28,14 @@ class AttributesModel {
   String toJson() => json.encode(toMap());
 
   factory AttributesModel.fromJson(String source) => AttributesModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  AttributesModel copyWith({
+    Attributes? attribute,
+    int? amount,
+  }) {
+    return AttributesModel(
+      attribute: attribute ?? this.attribute,
+      amount: amount ?? this.amount,
+    );
+  }
 }
