@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:ordem_paranormal_ficha/src/shared/models/ability_model.dart';
 import 'package:ordem_paranormal_ficha/src/shared/models/annotation_model.dart';
 import 'package:ordem_paranormal_ficha/src/shared/models/attack_model.dart';
@@ -10,6 +12,9 @@ import 'package:ordem_paranormal_ficha/src/shared/models/ritual_model.dart';
 import 'package:ordem_paranormal_ficha/src/shared/models/skill_model.dart';
 
 class CharacterModel {
+  final String name;
+  final String characterClass;
+  final int nex;
   final int life;
   final int maxLife;
   final int sanity;
@@ -22,10 +27,13 @@ class CharacterModel {
   final List<RitualModel> rituals;
   final List<AbilityModel> abilities;
   final List<SkillModel> skills;
-  final List<InventoryItemModel> iventory;
+  final List<InventoryItemModel> inventory;
   final List<AnnotationModel> annotations;
 
   CharacterModel({
+    required this.name,
+    required this.characterClass,
+    required this.nex,
     required this.life,
     required this.maxLife,
     required this.sanity,
@@ -38,12 +46,15 @@ class CharacterModel {
     required this.rituals,
     required this.abilities,
     required this.skills,
-    required this.iventory,
+    required this.inventory,
     required this.annotations,
   });
 
   factory CharacterModel.getDefault(){
     return CharacterModel(
+      name: "",
+      characterClass: "Especialista",
+      nex: 0,
       life: 0, 
       maxLife: 0, 
       sanity: 0, 
@@ -56,13 +67,16 @@ class CharacterModel {
       rituals: [],
       abilities: [],
       skills: [],
-      iventory: [],
+      inventory: [],
       annotations: []
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'name': name,
+      'characterClass': characterClass,
+      'nex': nex,
       'life': life,
       'maxLife': maxLife,
       'sanity': sanity,
@@ -75,13 +89,16 @@ class CharacterModel {
       'rituals': rituals.map((x) => x.toMap()).toList(),
       'abilities': abilities.map((x) => x.toMap()).toList(),
       'skills': skills.map((x) => x.toMap()).toList(),
-      'iventory': iventory.map((x) => x.toMap()).toList(),
+      'inventory': inventory.map((x) => x.toMap()).toList(),
       'annotations': annotations.map((x) => x.toMap()).toList(),
     };
   }
 
   factory CharacterModel.fromMap(Map<String, dynamic> map) {
     return CharacterModel(
+      name: map['name'] as String,
+      characterClass: map['characterClass'] as String,
+      nex: map['nex'] as int,
       life: map['life'] as int,
       maxLife: map['maxLife'] as int,
       sanity: map['sanity'] as int,
@@ -94,7 +111,7 @@ class CharacterModel {
       rituals: List<RitualModel>.from((map['rituals'] as List<int>).map<RitualModel>((x) => RitualModel.fromMap(x as Map<String,dynamic>),),),
       abilities: List<AbilityModel>.from((map['abilities'] as List<int>).map<AbilityModel>((x) => AbilityModel.fromMap(x as Map<String,dynamic>),),),
       skills: List<SkillModel>.from((map['skills'] as List<int>).map<SkillModel>((x) => SkillModel.fromMap(x as Map<String,dynamic>),),),
-      iventory: List<InventoryItemModel>.from((map['iventory'] as List<int>).map<InventoryItemModel>((x) => InventoryItemModel.fromMap(x as Map<String,dynamic>),),),
+      inventory: List<InventoryItemModel>.from((map['inventory'] as List<int>).map<InventoryItemModel>((x) => InventoryItemModel.fromMap(x as Map<String,dynamic>),),),
       annotations: List<AnnotationModel>.from((map['annotations'] as List<int>).map<AnnotationModel>((x) => AnnotationModel.fromMap(x as Map<String,dynamic>),),),
     );
   }
@@ -102,4 +119,44 @@ class CharacterModel {
   String toJson() => json.encode(toMap());
 
   factory CharacterModel.fromJson(String source) => CharacterModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  CharacterModel copyWith({
+    String? name,
+    String? characterClass,
+    int? nex,
+    int? life,
+    int? maxLife,
+    int? sanity,
+    int? maxSanity,
+    int? effortPoints,
+    int? maxEffortPoints,
+    List<AttributesModel>? attributes,
+    List<AttackModel>? attacks,
+    DefenseModel? defense,
+    List<RitualModel>? rituals,
+    List<AbilityModel>? abilities,
+    List<SkillModel>? skills,
+    List<InventoryItemModel>? inventory,
+    List<AnnotationModel>? annotations,
+  }) {
+    return CharacterModel(
+      name: name ?? this.name,
+      characterClass: characterClass ?? this.characterClass,
+      nex: nex ?? this.nex,
+      life: life ?? this.life,
+      maxLife: maxLife ?? this.maxLife,
+      sanity: sanity ?? this.sanity,
+      maxSanity: maxSanity ?? this.maxSanity,
+      effortPoints: effortPoints ?? this.effortPoints,
+      maxEffortPoints: maxEffortPoints ?? this.maxEffortPoints,
+      attributes: attributes ?? this.attributes,
+      attacks: attacks ?? this.attacks,
+      defense: defense ?? this.defense,
+      rituals: rituals ?? this.rituals,
+      abilities: abilities ?? this.abilities,
+      skills: skills ?? this.skills,
+      inventory: inventory ?? this.inventory,
+      annotations: annotations ?? this.annotations,
+    );
+  }
 }
