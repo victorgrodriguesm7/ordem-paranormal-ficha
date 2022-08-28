@@ -1,0 +1,4 @@
+enum Label {
+  short,
+  long;
+}
