@@ -21,9 +21,11 @@ class SplashPage extends StatelessWidget {
         if (state is SuccessAppState){
           FlutterNativeSplash.remove();
           if (state.hasCharacterAlready){
-            // TODO: Redirect to Register Page
-          } else {
             // TODO: Redirect to Home Page
+          } else {
+            Modular.to.pushReplacementNamed('/config', arguments: [
+              !state.hasCharacterAlready
+            ]);
           }
         }
 
