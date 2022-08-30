@@ -7,10 +7,12 @@ class DefaultDividerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
+      thickness: thickness,
       height: height,
       color: AppColors.red[300],
     );
   }
 
   static double get height => 2;
+  static double get thickness => 2.5;
 }
