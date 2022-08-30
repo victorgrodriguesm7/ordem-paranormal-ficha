@@ -30,7 +30,8 @@ class AppController extends ValueNotifier<AppState> {
     value = SuccessAppState(
       character: _character,
       hasCharacterAlready: _hasCharacterAlready,
-      saveCharacter: _saveCharacter
+      saveCharacter: _saveCharacter,
+      updateCharacter: _updateCharacter
     );
     
     return true;
@@ -46,5 +47,16 @@ class AppController extends ValueNotifier<AppState> {
     }
 
     return true;
+  }
+
+  void _updateCharacter(CharacterModel character){
+    _character = character;
+    
+    value = SuccessAppState(
+      character: character,
+      saveCharacter: _saveCharacter,
+      hasCharacterAlready: _hasCharacterAlready,
+      updateCharacter: _updateCharacter
+    );
   }
 }

@@ -15,11 +15,13 @@ class LoadingAppState extends AppState {}
 class SuccessAppState extends AppState {
   final CharacterModel? character;
   final bool hasCharacterAlready;
+  final void Function(CharacterModel character) updateCharacter;
   final Future<bool> Function() saveCharacter;
   
   SuccessAppState({
     required this.character,
     required this.hasCharacterAlready,
+    required this.updateCharacter,
     required this.saveCharacter
   });
 }
