@@ -8,13 +8,13 @@ import 'package:ordem_paranormal_ficha/src/shared/enums/attributes.dart';
 import 'package:ordem_paranormal_ficha/src/shared/extensions/list.dart';
 import 'package:ordem_paranormal_ficha/src/shared/models/attributes_model.dart';
 import 'package:ordem_paranormal_ficha/src/shared/widgets/custom_app_bar_widget.dart';
+import 'package:ordem_paranormal_ficha/src/shared/widgets/default_custom_text_button_widget.dart';
 import 'package:ordem_paranormal_ficha/src/shared/widgets/default_dropdown_button_widget.dart';
 import 'package:ordem_paranormal_ficha/src/shared/widgets/default_horizontal_text_input_widget.dart';
 import 'package:ordem_paranormal_ficha/src/shared/widgets/default_text_input_widget.dart';
 import 'package:ordem_paranormal_ficha/src/shared/extensions/extensions.dart';
 
 // TODO: add Image Uploader
-// TODO: add Save button
 class ConfigPage extends StatefulWidget {
   const ConfigPage({Key? key}) : super(key: key);
 
@@ -57,6 +57,7 @@ class _ConfigPageState extends State<ConfigPage> {
             }
 
             return SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Form(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
@@ -149,7 +150,12 @@ class _ConfigPageState extends State<ConfigPage> {
                           initialValue: att?.amount.toString() ?? '0'
                         );
                       }
-                    )
+                    ),
+                    CustomTextButton(
+                      text: controller.isNewChar ? "Criar" : "Salvar", 
+                      onPressed: controller.saveCharacter
+                    ),
+                    SizedBox(height: spacement)
                   ],
                 )
               ),
