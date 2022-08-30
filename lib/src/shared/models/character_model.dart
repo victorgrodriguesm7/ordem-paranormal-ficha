@@ -105,14 +105,14 @@ class CharacterModel {
       maxSanity: map['maxSanity'] as int,
       effortPoints: map['effortPoints'] as int,
       maxEffortPoints: map['maxEffortPoints'] as int,
-      attributes: List<AttributesModel>.from((map['attributes'] as List<int>).map<AttributesModel>((x) => AttributesModel.fromMap(x as Map<String,dynamic>),),),
-      attacks: List<AttackModel>.from((map['attacks'] as List<int>).map<AttackModel>((x) => AttackModel.fromMap(x as Map<String,dynamic>),),),
+      attributes: List<AttributesModel>.from((map['attributes'] as List).map<AttributesModel>((x) => AttributesModel.fromMap(x as Map<String,dynamic>),),),
+      attacks: List<AttackModel>.from((map['attacks'] as List).map<AttackModel>((x) => AttackModel.fromMap(x as Map<String,dynamic>),),),
       defense: DefenseModel.fromMap(map['defense'] as Map<String,dynamic>),
-      rituals: List<RitualModel>.from((map['rituals'] as List<int>).map<RitualModel>((x) => RitualModel.fromMap(x as Map<String,dynamic>),),),
-      abilities: List<AbilityModel>.from((map['abilities'] as List<int>).map<AbilityModel>((x) => AbilityModel.fromMap(x as Map<String,dynamic>),),),
-      skills: List<SkillModel>.from((map['skills'] as List<int>).map<SkillModel>((x) => SkillModel.fromMap(x as Map<String,dynamic>),),),
-      inventory: List<InventoryItemModel>.from((map['inventory'] as List<int>).map<InventoryItemModel>((x) => InventoryItemModel.fromMap(x as Map<String,dynamic>),),),
-      annotations: List<AnnotationModel>.from((map['annotations'] as List<int>).map<AnnotationModel>((x) => AnnotationModel.fromMap(x as Map<String,dynamic>),),),
+      rituals: List<RitualModel>.from((map['rituals'] as List).map<RitualModel>((x) => RitualModel.fromMap(x as Map<String,dynamic>),),),
+      abilities: List<AbilityModel>.from((map['abilities'] as List).map<AbilityModel>((x) => AbilityModel.fromMap(x as Map<String,dynamic>),),),
+      skills: List<SkillModel>.from((map['skills'] as List).map<SkillModel>((x) => SkillModel.fromMap(x as Map<String,dynamic>),),),
+      inventory: List<InventoryItemModel>.from((map['inventory'] as List).map<InventoryItemModel>((x) => InventoryItemModel.fromMap(x as Map<String,dynamic>),),),
+      annotations: List<AnnotationModel>.from((map['annotations'] as List).map<AnnotationModel>((x) => AnnotationModel.fromMap(x as Map<String,dynamic>),),),
     );
   }
 

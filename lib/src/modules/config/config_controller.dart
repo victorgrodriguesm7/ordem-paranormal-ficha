@@ -122,7 +122,7 @@ class ConfigController extends ValueNotifier<ConfigState> {
 
   Function(String? val) changeAttribute(Attributes attribute){
     return (String? val){
-      if (value is SuccessAppState){
+      if (value is SuccessConfigState){
         AttributesModel? att = character.attributes.firstWhereOrNull(
           (element) => element.attribute == attribute
         );
@@ -148,8 +148,11 @@ class ConfigController extends ValueNotifier<ConfigState> {
   }
 
   Future<void> saveCharacter() async {
-    await _appController.database.saveCharacterModel(character);
-
-    //TODO: Redirect to HOme Page
+    AppState appState = _appController.value;
+    if (appState is SuccessAppState){
+      appState.updateCharacter(character);
+      await appState.saveCharacter();
+      //TODO: Redirect to Home Page
+    }
   }
 }
