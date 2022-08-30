@@ -34,8 +34,8 @@ class DefenseModel {
       passive: map['passive'] as int,
       dodge: map['dodge'] as int,
       block: map['block'] as int,
-      details: List<DefenseDetailsModel>.from((map['details'] as List<int>).map<DefenseDetailsModel>((x) => DefenseDetailsModel.fromMap(x as Map<String,dynamic>),),),
-      resistances: List<DefenseResistancesModel>.from((map['resistances'] as List<int>).map<DefenseResistancesModel>((x) => DefenseResistancesModel.fromMap(x as Map<String,dynamic>),),),
+      details: List<DefenseDetailsModel>.from((map['details'] as List).map<DefenseDetailsModel>((x) => DefenseDetailsModel.fromMap(x as Map<String,dynamic>),),),
+      resistances: List<DefenseResistancesModel>.from((map['resistances'] as List).map<DefenseResistancesModel>((x) => DefenseResistancesModel.fromMap(x as Map<String,dynamic>),),),
     );
   }
 
