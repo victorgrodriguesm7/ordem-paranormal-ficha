@@ -146,4 +146,10 @@ class ConfigController extends ValueNotifier<ConfigState> {
       } 
     };
   }
+
+  Future<void> saveCharacter() async {
+    await _appController.database.saveCharacterModel(character);
+
+    //TODO: Redirect to HOme Page
+  }
 }
