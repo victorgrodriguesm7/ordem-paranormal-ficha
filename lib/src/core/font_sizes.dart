@@ -1,5 +1,5 @@
 class FontSizes {
-  static double text = 16;
-  static double subtitle = 24;
-  static double title = 32;
+  static const double text = 16;
+  static const double subtitle = 24;
+  static const double title = 32;
 }
