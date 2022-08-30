@@ -66,7 +66,7 @@ class CharacterModel {
       defense: DefenseModel.empty(),
       rituals: [],
       abilities: [],
-      skills: [],
+      skills: SkillModel.getDefaultSkills(),
       inventory: [],
       annotations: []
     );
