@@ -23,7 +23,7 @@ class SectionProfile extends StatelessWidget {
               Column(
                 children: const [
                   DefaultText(
-                    text: "Next: 5%",
+                    text: "Nex: 5%",
                     fontSize: FontSizes.subtitle,
                   ),
                   DefaultText(
