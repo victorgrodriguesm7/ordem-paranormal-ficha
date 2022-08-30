@@ -11,7 +11,7 @@ class DatabaseRepository {
 
   init() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    isStarted = false;
+    isStarted = true;
   }
 
   CharacterModel? getCharacterModel() {
